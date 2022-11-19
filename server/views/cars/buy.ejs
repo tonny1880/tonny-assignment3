@@ -1,0 +1,50 @@
+<%- include ../partials/header.ejs %>
+<!-- Main Content -->
+<main class="container">
+        <div class="row">
+            <div class="col-md offset-3 col-md-8">
+                <h1><%= title%></h1>
+                <a href="/cars-list/add" class="btn btn-primary" role="button">
+                    <i class="fas fa-plus-circle"></i> Add A Car </a>
+                <br>
+                <br>
+   <table class="table table-bordered table-striped table-hover">
+    <tr class="d-flex">
+        <th class="text-center col-2">Make</th>
+        <th class="text-center col-2">Model</th>
+        <th class="text-center col-1">Color</th>
+        <th class="text-center col-1">Year</th>
+        <th class="text-center col-2">Price</th>
+        <th class="text-center col-6">Description</th>
+        <th class="text-center col-1"></th>
+        <th class="text-center col-1"></th>
+    </tr> 
+    <!--Repeat the Template -->
+   <% for(let count=0; count<Carbuy.length; count++) {%>
+    <tr class="d-flex">
+    <td class="text-center col-2"><%= Carbuy[count].Make %></td>
+    <td class="text-center col-2"><%= Carbuy[count].Model %></td>
+    <td class="text-center col-1"><%= Carbuy[count].Color %></td>
+    <td class="text-center col-1"><%= Carbuy[count].Year %></td>
+    <td class="text-center col-2"><%= Carbuy[count].Price %></td>
+    <td class="text-center col-6"><%= Carbuy[count].Description %></td>
+    <td class="text-center col-1">
+        <a href="/cars-list/edit/<%= Carbuy[count]._id %>"
+            class="btn btn-primary">
+            <i class="fas fa-pencil-alt"></i>Edit</a>
+        
+        </td>
+        <td class="text-center col-1">
+            <a href="/cars-list/delete/<%= Carbuy[count]._id %>"
+                class="btn btn-danger">
+                <i class="fas fa-trash-alt"></i>Delete</a>
+            
+            </td>
+    </tr> 
+    <%}
+     %>
+</table>
+    </div>
+    </div>
+</main>
+<%- include ../partials/footer.ejs %> 
